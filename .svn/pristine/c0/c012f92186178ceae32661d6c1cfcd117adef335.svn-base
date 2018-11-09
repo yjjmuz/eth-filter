@@ -1,0 +1,12 @@
+$('#qukuai').click(()=>{
+    $('.content').eq(2).show(200).siblings().hide(200);
+})
+$('#jiaoyi').click(()=>{
+    $('.content').eq(1).show(200).siblings().hide(200);
+})
+$('#shouye').click(()=>{
+    $('.content').eq(0).show(200).siblings().hide(200);
+})
+ var data = ([{"list":[{"tx_id":"1","tranHash":"0x667fa394161ab423f738ea257ed415329531304a2e22d377039e046b63f8525a"},{"tx_id":"2","tranHash":"0xbe1be34dc895f3f332022440af227199b9e5b4410e9a4984cbd8fc51f61a1fc6"},{"tx_id":"3","tranHash":"0xe5396854d0a7f56499afce8cd39d5458a3a11b4aa883df4e390db7c8ba1540e8"},{"tx_id":"4","tranHash":"0xe1961606bb857e6262e590366089eedddfd2e455b9a153da78e064ad6f1875d1"},{"tx_id":"5","tranHash":"0xe1961606bb857e6262e590366089eedddfd2e455b9a153da78e064ad6f1875d1"}]}
+])
+console.log(data[0].list[0])

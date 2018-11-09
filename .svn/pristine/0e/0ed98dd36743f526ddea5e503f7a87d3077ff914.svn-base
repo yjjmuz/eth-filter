@@ -1,0 +1,14 @@
+<?php
+require_once 'database.php';
+$mysqli = new ConnectMysqli();
+$sql = "SELECT tranHash FROM `hash_list` LIMIT 1,25";
+$res = $mysqli->query($sql);
+
+$row = mysqli_fetch_assoc($res);
+echo '<pre>';
+while($row = mysqli_fetch_assoc($res))
+{
+    $arr[] = $row;
+}
+$data['list'] = $arr;
+echo json_encode($data);

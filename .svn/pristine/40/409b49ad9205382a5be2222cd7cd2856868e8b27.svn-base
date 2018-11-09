@@ -1,0 +1,13 @@
+<?php
+require_once 'database.php';
+$mysqli = new ConnectMysqli();
+$sql = "SELECT * FROM `tx`  ORDER BY 'tx_id' desc LIMIT 0,5";
+$res = $mysqli->query($sql);
+
+while($row = mysqli_fetch_assoc($res))
+{
+    $arr[] = $row;
+}
+$data = $arr;
+// var_dump($data);
+

@@ -1,0 +1,10 @@
+$('#qukuai').click(()=>{
+    $('.content').eq(2).show(200).siblings().hide(200);
+})
+$('#jiaoyi').click(()=>{
+    $('.content').eq(1).show(200).siblings().hide(200);
+})
+$('#shouye').click(()=>{
+    $('.content').eq(0).show(200).siblings().hide(200);
+})
+

@@ -1,0 +1,17 @@
+<?php
+require_once 'database.php';
+
+$page = isset($_GET['page'])? $_GET['page']:1;
+$pageSize = isset($_GET['pageSize'])? $_GET['pageSize']:25;
+
+$mysqli = new ConnectMysqli();
+$sql = "SELECT * FROM `tx` LIMIT $page,$pageSize";
+$res = $mysqli->query($sql);
+
+$row = mysqli_fetch_assoc($res);
+echo '<pre>';
+while($row = mysqli_fetch_assoc($res))
+{
+    $arr[] = $row;
+}
+$data = $arr;

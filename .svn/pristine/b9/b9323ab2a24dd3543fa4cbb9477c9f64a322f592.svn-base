@@ -1,0 +1,8 @@
+<?php
+$a = 'getone()';
+$res ='';
+for($i = 0;$i<strlen($a);$i++){
+    $res .= dechex(ord($a[$i]));
+    echo $res."<br>";
+}
+echo $res;
