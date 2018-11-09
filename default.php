@@ -53,6 +53,25 @@
                 <li></li>  
              </ul>
              <?php endforeach;?>
+         <div class="list">
+             <div class="listleft">
+                 <span>分页</span>
+                 <select  class="form-control" ng-model="othermodel.qc_type_code_oth_param" ng-change="choice(this.othermodel.qc_type_code_oth_param)" placeholder="分页" style="width: 50px;height:25px;" >
+                    <option value ="1">10</option>
+                    <option value ="2">25</option>
+                    <option value ="3">50</option>
+                    <option value ="4">100</option>
+                 </select>
+             </div>
+             <div class="listright">
+                 <a href="">首页</a>
+                 <a href="">上一页</a>
+                 <input type="text" placeholder="skip"/>
+                 <a href="">跳转</a>
+                 <a href="">下一页</a>
+                 <a href="">尾页</a>
+             </div>
+         </div>
          </div>
      </div>
      <!-- 查询区块详情 -->
@@ -105,10 +124,40 @@
      </div>
      </div>
     </div>
+    <div class="fooer">
+        
+    </div>
 </body>
     <script type="text/javascript" src='js/jquery-3.1.1.js'></script>
     <script type="text/javascript" src='js/jquery-3.1.1.min.js'></script>
     <script type="text/javascript" src='js/boole.js'></script>
     <script src="./node_modules/web3/dist/web3.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){  
+function loadXMLDoc()
+{
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+    {
+        //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {
+        // IE6, IE5 浏览器执行代码
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+            console.log(xmlhttp);
+        }
+    }
+    xmlhttp.open("GET","./dataFolder/blocklist.php",true);
+    xmlhttp.send();
+}
+});
+    </script>
 </html>

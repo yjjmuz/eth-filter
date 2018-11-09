@@ -172,7 +172,6 @@ button {
         background: rgba(247,247,247,1);    
         width: 1340px;
         padding-top: 50px;
-        height: 1200px;
         border-top: 3px solid #ccc;
     }
     #about1{
@@ -287,4 +286,24 @@ button {
       line-height: 42px;
       position: absolute;
       left: 135px;
+    }
+    .fooer{
+        width: 100%;
+        height: 230px;
+        background: rgba(39,39,39,1);
+    }
+    .list{
+        height: 60px;
+    }
+    .listleft{
+        float: left;
+        line-height: 60px;
+    }
+    .listright{
+        float: right;
+        line-height: 60px;
+    }
+    .listright input{
+        width: 45px;
+        height: 0px
     }

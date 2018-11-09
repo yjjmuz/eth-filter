@@ -269,5 +269,28 @@ $(document).ready(function(){
            var cc = timestampToTime(date);
            $('.chuanshi ul').eq(i).find('li').eq(2).text(cc);
          }
-         console.log(main('0xdf230957575b4b2fa83cd1412d608639ef38432b3eeb54c9ad56f2080ebef08e'))
+         console.log(main('0xdf230957575b4b2fa83cd1412d608639ef38432b3eeb54c9ad56f2080ebef08e'));
+         //ajax请求
+//          function loadXMLDoc(){
+//     var xmlhttp;
+//     if (window.XMLHttpRequest)
+//     {
+//         //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+//         xmlhttp=new XMLHttpRequest();
+//     }
+//     else
+//     {
+//         // IE6, IE5 浏览器执行代码
+//         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+//     }
+//     xmlhttp.onreadystatechange=function()
+//     {
+//         if (xmlhttp.readyState==4 && xmlhttp.status==200)
+//         {
+//             document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+//         }
+//     }
+//     xmlhttp.open("POST","ajax_info.txt",true);
+//     xmlhttp.send();
+// }
 }); 
