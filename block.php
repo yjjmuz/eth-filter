@@ -35,53 +35,57 @@
     <div>
      <div class="content">
          <div class="container" style="background: #fff;padding-top: 20px;">
-             <ul class="shichuan">
+            <ul class="shichuan">
                 <li>快高</li>
                 <li>生成时间</li>
                 <li>交易数量</li>
                 <li>出块者</li>
                 <li>哈希</li>  
-             </ul>
+            </ul>
 
-                <?php foreach($bdata as $k2 => $v2):?>
-                <ul class="shichuan1">
-                <li><?php echo $v2['number'];?></li>
-                <li><?php
-                        $age = time()-$v2['timestamp'];
-                        if($age<60){
-                            echo $age .' secs ago';
-                        }elseif ($age<3600){
-                            echo (int)($age/60) . ' mins ago';
-                        }elseif ($age<86400){
-                            echo (int)($age/3600) . ' hrs ' .(int)($age%3600/60) . ' mins ago';
-                        }else {
-                            echo (int)($age/86400) . ' days '. (int)($age%86400/3600) . ' hrs ago' ;
-                        }
+            <?php foreach($bdata as $k2 => $v2):?>
+            <ul class="shichuan1">
+            <li><?php echo $v2['number'];?></li>
+            <li><?php
+                    $age = time()-$v2['timestamp'];
+                    if($age<60){
+                        echo $age .' secs ago';
+                    }elseif ($age<3600){
+                        echo (int)($age/60) . ' mins ago';
+                    }elseif ($age<86400){
+                        echo (int)($age/3600) . ' hrs ' .(int)($age%3600/60) . ' mins ago';
+                    }else {
+                        echo (int)($age/86400) . ' days '. (int)($age%86400/3600) . ' hrs ago' ;
+                    }
+            
+            ?></li>
+            <li><?php echo count($v2['transactions']);?></li>
+            <li><?php echo $v2['miner'];?></li>
+            <li><?php echo $v2['hash'];?></li> 
+            </ul>
+            <?php endforeach;?>
+            <div class="list">
                 
-                ?></li>
-                <li><?php echo count($v2['transactions']);?></li>
-                <li><?php echo $v2['miner'];?></li>
-                <li><?php echo $v2['hash'];?></li> 
-                </ul>
-                <?php endforeach;?>
-                <div class="list">
-             <div class="listleft">
+                <div class="listleft">
                  <span>分页</span>
-                 <select  class="form-control" ng-model="othermodel.qc_type_code_oth_param" ng-change="choice(this.othermodel.qc_type_code_oth_param)" placeholder="分页" style="width: 50px;height:25px;" >
-                    <option value ="1">10</option>
-                    <option value ="2">25</option>
-                    <option value ="3">50</option>
-                    <option value ="4">100</option>
-                 </select>
-             </div>
-             <div class="listright">
-                 <a href="./" onclick="loadXMLDoc()">首页</a>
-                 <a href="">上一页</a>
-                 <input type="text" placeholder="skip"/>
-                 <a href="">跳转</a>
-                 <a href="">下一页</a>
-                 <a href="">尾页</a>
-             </div>
+                 <form id = "sizefrom" action="block.php?pagesize" method ="get">
+                 	<select name="pagesize" onchange="submitForm();">
+                        <option value ="10">10</option>
+                        <option value ="25">25</option>
+                        <option value ="50">50</option>
+                        <option value ="100">100</option>                        
+                	</select>
+
+                 </form>                 
+                </div>
+                 <div class="listright">
+                     <a href="block.php?page=1" onclick="loadXMLDoc()">首页</a>
+                     <a href="block.php?page=<?php echo (($_GET['page']-1)<0)?$_GET['page']-1 : 1 ; ?>">上一页</a>
+                     <input type="text" placeholder="skip"/>
+                     <a href="">跳转</a>
+                     <a href="block.php?page=<?php echo $_GET['page']+1; ?>">下一页</a>
+                     <a href="block.php?page=<?php echo $maxPage ;?>">尾页</a>
+                 </div>
          </div>
          </div>
      </div>
@@ -139,6 +143,12 @@
         
     </div>
 </body>
+	<script>
+		function submitForm(){
+		    var form = document.getElementById("sizefrom");
+		    form.submit();
+		}
+	</script>
     <script type="text/javascript" src='js/jquery-3.1.1.js'></script>
     <script type="text/javascript" src='js/jquery-3.1.1.min.js'></script>
     <script type="text/javascript" src='js/boole.js'></script>
