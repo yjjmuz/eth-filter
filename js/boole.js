@@ -248,7 +248,7 @@ $(document).ready(function(){
          // }
          //交易页面遍历
          var haxi =  $('.chuanshi ul').length;
-         console.log(haxi);
+         console.log($('.chuanshi ul').length);
          for(var i=0;i<haxi;i++){
             var zhi = $('.chuanshi ul').eq(i).find('li').eq(0).text();
           console.log(zhi);
@@ -268,8 +268,7 @@ $(document).ready(function(){
            var date = main(qiang.blockHash).timestamp;
            var cc = timestampToTime(date);
            $('.chuanshi ul').eq(i).find('li').eq(2).text(cc);
-         }
-         console.log(main('0xdf230957575b4b2fa83cd1412d608639ef38432b3eeb54c9ad56f2080ebef08e'));
+          }
          //ajax请求
 //          function loadXMLDoc(){
 //     var xmlhttp;

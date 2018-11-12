@@ -1,5 +1,5 @@
 <?php 
-    require_once 'dataFolder/tranList.php';
+    // require_once 'dataFolder/tranList.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,17 +43,8 @@
                 <li>接收者</li>
                 <li>交易值</li>  
              </ol>
-             <?php foreach($tran_data as $k1 => $v1):?>
-             <ul>
-                <li><?php echo $v1['txhash']?></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>  
-             </ul>
-             <?php endforeach;?>
-         <div class="list">
+         </div>
+         <div class="list" style="margin: 0 auto;width: 1340px;">
              <div class="listleft">
                  <span>分页</span>
                  <select  class="form-control" ng-model="othermodel.qc_type_code_oth_param" ng-change="choice(this.othermodel.qc_type_code_oth_param)" placeholder="分页" style="width: 50px;height:25px;" >
@@ -64,14 +55,13 @@
                  </select>
              </div>
              <div class="listright">
-                 <a href="">首页</a>
+                 <a id="bbb">首页</a>
                  <a href="">上一页</a>
                  <input type="text" placeholder="skip"/>
                  <a href="">跳转</a>
                  <a href="">下一页</a>
                  <a href="">尾页</a>
              </div>
-         </div>
          </div>
      </div>
      <!-- 查询区块详情 -->
@@ -152,12 +142,56 @@ function loadXMLDoc()
     {
         if (xmlhttp.readyState==4 && xmlhttp.status==200)
         {
-            console.log(xmlhttp);
+            var str = xmlhttp.responseText;
+            console.log(str);
+            // console.log(str);
+            var xqo = eval('(' + str + ')');
+            // console.log(xqo);
+            var totalCount = xqo.length; //总记录
+            var pageSize = 10; // 每页显示几条记录 
+            var pageTotal = Math.ceil(totalCount / pageSize); // 总页数
+            //循环遍历
+for(var i in xqo){
+    console.log(xqo);
+     $('.chuanshi').append(function() {
+        return '<ul><li>'+xqo[i].txhash+'</li><li>'+xqo[i].number+'</li><li>'+xqo[i].timestamp+'</li><li>'+xqo[i].from+'</li><li>'+xqo[i].to+'</li><li>'+xqo[i].value+'</li></ul>';
+});
+}
+
+//测试
+var conts = 25;
+console.log(conts);
+$('#bbb').click(function(){
+    var i = 0;
+     i += conts;
+     console.log(i);
+})
+//测试
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
     }
-    xmlhttp.open("GET","./dataFolder/blocklist.php",true);
+    xmlhttp.open("GET","./dataFolder/tranlist.php",true);
     xmlhttp.send();
 }
+loadXMLDoc();
 });
     </script>
 </html>
